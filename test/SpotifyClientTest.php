@@ -39,12 +39,11 @@ class SpotifyClientTest extends \PHPUnit_Framework_TestCase
      */
     public function testGetArtistsAndAlbumsByIdListSucceeds($artistIdList)
     {
+        $expected = 'Websoftwares\Spotify\ArtistsAlbumsList';
         $actual = $this->spotifyClient
             ->getArtistsAndAlbumsByIdList($artistIdList);
 
-        $expected = '\stdObject';
-
-        $this->assertInternalType('array', $actual->artists);
+        $this->assertInstanceOf($expected, $actual);
     }
 
     /**
@@ -92,6 +91,10 @@ class SpotifyClientTest extends \PHPUnit_Framework_TestCase
     {
         $mock = new MockHandler([
             $this->getSeveralArtistsResponse(),
+            $this->getRelatedArtistsResponse(),
+            $this->getEmptyArtistsResponse(),
+            $this->getEmptyArtistsResponse(),
+            $this->getEmptyArtistsResponse()
         ]);
 
         $handler = HandlerStack::create($mock);
@@ -112,6 +115,43 @@ class SpotifyClientTest extends \PHPUnit_Framework_TestCase
         $status = 200;
 
         $body = file_get_contents(__DIR__ . '/get-several-artists.json');
+
+        $response = new Response($status, $header, $body, $protocol);
+
+        return $response;
+    }
+
+    /**
+     * Returns the response for empty artists request.
+     *
+     * @return Response
+     */
+    public function getEmptyArtistsResponse()
+    {
+        $header =  ['Content-Type' => 'application/json'];
+        $protocol = '1.1';
+        $status = 200;
+
+        $body = '';
+
+        $response = new Response($status, $header, $body, $protocol);
+
+        return $response;
+    }
+
+
+    /**
+     * Returns the response for get-related-artists request.
+     *
+     * @return Response
+     */
+    public function getRelatedArtistsResponse()
+    {
+        $header =  ['Content-Type' => 'application/json'];
+        $protocol = '1.1';
+        $status = 200;
+
+        $body = file_get_contents(__DIR__ . '/get-related-artists.json');
 
         $response = new Response($status, $header, $body, $protocol);
 
