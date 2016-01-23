@@ -50,7 +50,6 @@ class ArtistsHandler implements ArtistsAlbumsHandlerInterface
         $promisses = [];
 
         foreach ($this->getArtistsAlbumsList() as $artistEntity) {
-
             if (isset($this->processedArtistsList[$artistEntity->id])
                 && $this->processedArtistsList[$artistEntity->id] === true) {
                 continue;
@@ -81,7 +80,6 @@ class ArtistsHandler implements ArtistsAlbumsHandlerInterface
     private function process($values)
     {
         foreach ($values->artists as $artist) {
-
             if ($this->threshold >= self::MAX_THRESHOLD) {
                 continue;
             }
