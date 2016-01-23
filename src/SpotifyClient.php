@@ -1,12 +1,10 @@
 <?php
+
 namespace Websoftwares\Spotify;
 
-use GuzzleHttp\Promise\Promise;
 use GuzzleHttp\Client;
-use Websoftwares\Spotify\ArtistAlbumCollection;
 
 /**
- * @package Websoftwares\Spotify;
  */
 class SpotifyClient
 {
@@ -28,23 +26,31 @@ class SpotifyClient
     /**
      * Returns a list of artist entities.
      *
-     * @param  array $artistIdList list of spotify id's.
+     * @param array $artistIdList list of spotify id's.
      *
      * @return array Artists list.
      */
     public function getArtistsAndAlbumsByIdList(array $artistIdList = [])
     {
-        if (empty($artistIdList))
-        {
+        if (empty($artistIdList)) {
             throw new \InvalidArgumentException('Artist id list is empty.');
         }
 
-        $getSeveralArtists = 'artists?ids=' . implode(',', $artistIdList);
+        $getSeveralArtists = 'artists?ids='.implode(',', $artistIdList);
 
         $promise = $this->client
-            ->getAsync($getSeveralArtists);
+            ->getAsync($getSeveralArtists)
+                ->then(
+                    new ArtistsHandler(
+                        new ArtistsAlbumsList(),
+                        $this->client
+                    )
+                )->then(
+
+                );
 
         $response = $promise->wait();
-        return json_decode((string) $response->getBody());
+
+        return $response->getArtistsAlbumsList();
     }
 }
