@@ -1,0 +1,35 @@
+{
+  "artists" : [ {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/3PyWEKLWI0vHPmoNrIX0QE"
+    },
+    "followers" : {
+      "href" : null,
+      "total" : 46523
+    },
+    "genres" : [ "east coast hip hop", "hardcore hip hop", "hip hop", "rap" ],
+    "href" : "https://api.spotify.com/v1/artists/3PyWEKLWI0vHPmoNrIX0QE",
+    "id" : "3PyWEKLWI0vHPmoNrIX0QE",
+    "images" : [ {
+      "height" : 571,
+      "url" : "https://i.scdn.co/image/815729842120637ddfd220941716e4588320ecc4",
+      "width" : 706
+    }, {
+      "height" : 518,
+      "url" : "https://i.scdn.co/image/b0c5fe20b69d474d8999153853733287cd896b25",
+      "width" : 640
+    }, {
+      "height" : 162,
+      "url" : "https://i.scdn.co/image/ccff078b8af4cc6a4f72537619073cda7ef97d60",
+      "width" : 200
+    }, {
+      "height" : 52,
+      "url" : "https://i.scdn.co/image/d9091b400811d855887ba51658c7d6571def1018",
+      "width" : 64
+    } ],
+    "name" : "Rakim",
+    "popularity" : 53,
+    "type" : "artist",
+    "uri" : "spotify:artist:3PyWEKLWI0vHPmoNrIX0QE"
+  }]
+}

@@ -1,0 +1,36 @@
+{
+    "name" : "websoftwares/spotify-artist-album-overview",
+    "description" : "Test case using Guzzle to make async requests using promises to handle the responses.",
+    "keywords" : [
+        "HTTP",
+        "Async",
+        "Request",
+        "Promise",
+        "Response"
+    ],
+    "license" : "MIT",
+    "authors" : [
+        {
+            "name": "Boris Verhaaff",
+            "email": "boris@websoftwar.es",
+            "role" : "Developer"
+        }
+    ],
+    "require" : {
+        "php": ">=5.5.0",
+        "guzzlehttp/guzzle": "^6.1",
+        "phpunit/phpunit": "~4.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Websoftwares\\Spotify\\":  "src/"
+        }
+    },
+    "require-dev": {
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Websoftwares\\Spotify\\Test\\":  "test/"
+        }
+    }
+}

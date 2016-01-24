@@ -1,0 +1,99 @@
+{
+  "artists" : [ {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/6jHG1YQkqgojdEzerwvrVv"
+    },
+    "followers" : {
+      "href" : null,
+      "total" : 42148
+    },
+    "genres" : [ "hip hop", "old school hip hop", "rap" ],
+    "href" : "https://api.spotify.com/v1/artists/6jHG1YQkqgojdEzerwvrVv",
+    "id" : "6jHG1YQkqgojdEzerwvrVv",
+    "images" : [ {
+      "height" : 674,
+      "url" : "https://i.scdn.co/image/a82b0ceacf44bcdfe2b705c4bc252ce543836062",
+      "width" : 1000
+    }, {
+      "height" : 431,
+      "url" : "https://i.scdn.co/image/c73905f3394d1802bc3cab559941ddcd190b5aec",
+      "width" : 639
+    }, {
+      "height" : 135,
+      "url" : "https://i.scdn.co/image/5b43a9163728e3195d612ecae9f325ce352cb880",
+      "width" : 200
+    }, {
+      "height" : 43,
+      "url" : "https://i.scdn.co/image/38f8b2ad3c48aedad5929a0bd23c9ff465225c07",
+      "width" : 64
+    } ],
+    "name" : "Eric B. & Rakim",
+    "popularity" : 52,
+    "type" : "artist",
+    "uri" : "spotify:artist:6jHG1YQkqgojdEzerwvrVv"
+  }, {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/34EP7KEpOjXcM2TCat1ISk"
+    },
+    "followers" : {
+      "href" : null,
+      "total" : 405715
+    },
+    "genres" : [ "hardcore hip hop", "rap" ],
+    "href" : "https://api.spotify.com/v1/artists/34EP7KEpOjXcM2TCat1ISk",
+    "id" : "34EP7KEpOjXcM2TCat1ISk",
+    "images" : [ {
+      "height" : 667,
+      "url" : "https://i.scdn.co/image/3032ab765a4903b6f68e1f50f5c3a8936c6d5583",
+      "width" : 1000
+    }, {
+      "height" : 427,
+      "url" : "https://i.scdn.co/image/a867f6e716e767ff2694a068e1b0349f05b550d1",
+      "width" : 640
+    }, {
+      "height" : 133,
+      "url" : "https://i.scdn.co/image/46b58683046c0faa82ec35f80c6a4e1e7c8c4078",
+      "width" : 200
+    }, {
+      "height" : 43,
+      "url" : "https://i.scdn.co/image/aa905e493dc1e9100c6c1b55582aca8d21dd29e2",
+      "width" : 64
+    } ],
+    "name" : "Wu-Tang Clan",
+    "popularity" : 67,
+    "type" : "artist",
+    "uri" : "spotify:artist:34EP7KEpOjXcM2TCat1ISk"
+  }, {
+    "external_urls" : {
+      "spotify" : "https://open.spotify.com/artist/20qISvAhX20dpIbOOzGK3q"
+    },
+    "followers" : {
+      "href" : null,
+      "total" : 565604
+    },
+    "genres" : [ "hip hop", "rap" ],
+    "href" : "https://api.spotify.com/v1/artists/20qISvAhX20dpIbOOzGK3q",
+    "id" : "20qISvAhX20dpIbOOzGK3q",
+    "images" : [ {
+      "height" : 735,
+      "url" : "https://i.scdn.co/image/6cbe8fb2484bd9222c7659700b1dc5f44a619e68",
+      "width" : 1000
+    }, {
+      "height" : 471,
+      "url" : "https://i.scdn.co/image/8a24ee2ee0bd9634837c76daf7715c668da633c8",
+      "width" : 640
+    }, {
+      "height" : 147,
+      "url" : "https://i.scdn.co/image/3b682e2aa7bd59925042cd2bbe4a696013b25f67",
+      "width" : 200
+    }, {
+      "height" : 47,
+      "url" : "https://i.scdn.co/image/7c06b712e2529628335a6df27a0c7309d4459b95",
+      "width" : 64
+    } ],
+    "name" : "Nas",
+    "popularity" : 75,
+    "type" : "artist",
+    "uri" : "spotify:artist:20qISvAhX20dpIbOOzGK3q"
+  }]
+}
