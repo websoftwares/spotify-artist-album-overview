@@ -41,15 +41,21 @@ class ArtistsHandler implements ArtistsAlbumsHandlerInterface
     {
         $response = json_decode((string) $values->getBody());
 
+        // Return when empty response.
         if (empty($response)) {
             return $this;
         }
 
+        // Process the response.
         $this->process($response);
 
         $promisses = [];
 
+        // Loop over all artist and create promisses
         foreach ($this->getArtistsAlbumsList() as $artistEntity) {
+            $artistEntity = $artistEntity[0];
+
+            // Process offset value only one time.
             if (isset($this->processedArtistsList[$artistEntity->id])
                 && $this->processedArtistsList[$artistEntity->id] === true) {
                 continue;
@@ -60,11 +66,12 @@ class ArtistsHandler implements ArtistsAlbumsHandlerInterface
 
                 $promisses[] = $this->client
                     ->getAsync($getArtistRelatedArtists)
-                        ->then($this);
+                        ->then($this); // <= re-use same object.
+
                 $this->processedArtistsList[$artistEntity->id] = true;
             }
         }
-
+        // Resolve promisses.
         Promise\unwrap($promisses);
 
         return $this;
@@ -84,12 +91,12 @@ class ArtistsHandler implements ArtistsAlbumsHandlerInterface
                 continue;
             }
 
-            $artistEntity = new ArtistEntity();
+            $artistEntity = EntityFactory::newArtistEntityInstance();
 
             $artistEntity->name = $artist->name;
             $artistEntity->id = $artist->id;
 
-            $this->artistsAlbumsList[$artistEntity->id] = $artistEntity;
+            $this->artistsAlbumsList[$artistEntity->id] = [$artistEntity];
             $this->processedArtistsList[$artistEntity->id] = false;
             $this->threshold++;
         }

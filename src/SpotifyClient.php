@@ -17,6 +17,7 @@ class SpotifyClient
      * Constructor.
      *
      * @param Client $client Instance of the guzzle client.
+     * @param ArtistHandlerFactory Instance of the artist handler.
      */
     public function __construct(Client $client)
     {
@@ -37,16 +38,17 @@ class SpotifyClient
         }
 
         $getSeveralArtists = 'artists?ids='.implode(',', $artistIdList);
+        $rejectHandler = HandlerFactory::newRejectHandlerInstance();
 
         $promise = $this->client
             ->getAsync($getSeveralArtists)
                 ->then(
-                    new ArtistsHandler(
-                        new ArtistsAlbumsList(),
-                        $this->client
+                    HandlerFactory::newArtistHandlerInstance($this->client),
+                    $rejectHandler
                     )
-                )->then(
-
+                ->then(
+                    HandlerFactory::newAlbumsHandlerInstance($this->client),
+                    $rejectHandler
                 );
 
         $response = $promise->wait();
