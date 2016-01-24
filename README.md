@@ -13,9 +13,9 @@ __Tasks__:
 
 ## Run demo
 
-1) Clone the repository
-2) Run composer installl.
-3) Start webserver.
+- Clone the repository
+- Run composer installl.
+- Start webserver.
 
 ```
 php -S localhost:8888 -t web/
