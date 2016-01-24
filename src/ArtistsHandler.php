@@ -9,7 +9,7 @@ use GuzzleHttp\Promise;
 class ArtistsHandler implements ArtistsAlbumsHandlerInterface
 {
     // Be nice to spotify api endpoint.
-    const MAX_THRESHOLD = 3;
+    const MAX_THRESHOLD = 100;
 
     private $artistsAlbumsList;
     private $client;

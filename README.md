@@ -11,6 +11,16 @@ __Tasks__:
 - Retrieve artists albums previous retrieved artist ids extract album name.
 - Create a overview with the following data artist name, album title.
 
+## Run demo
+
+1) Clone the repository
+2) Run composer installl.
+3) Start webserver.
+
+```
+php -S localhost:8888 -t web/
+```
+
 ## Testing
 In the test folder u can find several tests.
 

@@ -37,7 +37,7 @@ class AlbumsHandler implements ArtistsAlbumsHandlerInterface
 
         // Loop over the artists albums list creating promisses for each artist.
         foreach ($this->artistsAlbumsList as $artistId => $artistAlbum) {
-            $artistsTopTracks = 'artists/'.$artistId.'/top-tracks';
+            $artistsTopTracks = 'artists/'.$artistId.'/top-tracks?country=US';
             $promisses[$artistId] = $this->client->getAsync($artistsTopTracks);
         }
 
