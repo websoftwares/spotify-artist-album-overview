@@ -8,6 +8,7 @@ use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
 use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\Exception\RequestException;
 
 /**
  * Class SpotifyClientTest.
@@ -41,6 +42,32 @@ class SpotifyClientTest extends \PHPUnit_Framework_TestCase
         $expected = 'Websoftwares\Spotify\ArtistsAlbumsList';
         $actual = $this->spotifyClient
             ->getArtistsAndAlbumsByIdList($artistIdList);
+
+        $this->assertInstanceOf($expected, $actual);
+    }
+
+    /**
+     * testGetArtistsAndAlbumsByIdListFails.
+     *
+     * @expectedException GuzzleHttp\Promise\RejectionException
+     */
+    public function testGetArtistsAndAlbumsByIdListFails()
+    {
+        $badRequest = new RequestException(
+            'Error Communicating with Server', new Request('GET', 'test')
+        );
+
+        $mock = new MockHandler([$badRequest]);
+
+        $handler = HandlerStack::create($mock);
+        $client = new Client(['handler' => $handler]);
+        $spotifyClient = new SpotifyClient($client);
+
+        $expected = 'Websoftwares\Spotify\ArtistsAlbumsList';
+
+        $actual = $spotifyClient->getArtistsAndAlbumsByIdList(
+            ['6jHG1YQkqgojdEzerwvrVv']
+        );
 
         $this->assertInstanceOf($expected, $actual);
     }
@@ -91,9 +118,13 @@ class SpotifyClientTest extends \PHPUnit_Framework_TestCase
         $mock = new MockHandler([
             $this->getSeveralArtistsResponse(),
             $this->getRelatedArtistsResponse(),
-            $this->getEmptyArtistsResponse(),
-            $this->getEmptyArtistsResponse(),
-            $this->getEmptyArtistsResponse(),
+            $this->getEmptyArtistsAlbumsResponse(),
+            $this->getEmptyArtistsAlbumsResponse(),
+            $this->getEmptyArtistsAlbumsResponse(),
+            $this->getAlbumsResponse(),
+            $this->getEmptyArtistsAlbumsResponse(),
+            $this->getEmptyArtistsAlbumsResponse(),
+            $this->getEmptyArtistsAlbumsResponse(),
         ]);
 
         $handler = HandlerStack::create($mock);
@@ -121,11 +152,11 @@ class SpotifyClientTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Returns the response for empty artists request.
+     * Returns the response for empty artists or albums request.
      *
      * @return Response
      */
-    public function getEmptyArtistsResponse()
+    public function getEmptyArtistsAlbumsResponse()
     {
         $header =  ['Content-Type' => 'application/json'];
         $protocol = '1.1';
@@ -150,6 +181,24 @@ class SpotifyClientTest extends \PHPUnit_Framework_TestCase
         $status = 200;
 
         $body = file_get_contents(__DIR__.'/get-related-artists.json');
+
+        $response = new Response($status, $header, $body, $protocol);
+
+        return $response;
+    }
+
+    /**
+     * Returns the response for get-artist-top-tracks request.
+     *
+     * @return Response
+     */
+    public function getAlbumsResponse()
+    {
+        $header =  ['Content-Type' => 'application/json'];
+        $protocol = '1.1';
+        $status = 200;
+
+        $body = file_get_contents(__DIR__.'/get-artist-top-tracks.json');
 
         $response = new Response($status, $header, $body, $protocol);
 
