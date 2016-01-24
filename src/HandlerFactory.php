@@ -33,6 +33,11 @@ class HandlerFactory
         return new AlbumsHandler($client);
     }
 
+    /**
+     * Returns a new instance.
+     *
+     * @return RejectHandler
+     */
     public static function newRejectHandlerInstance()
     {
         return new RejectHandler();

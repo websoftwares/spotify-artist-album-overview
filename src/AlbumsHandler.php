@@ -8,7 +8,14 @@ use GuzzleHttp\Promise;
 
 class AlbumsHandler implements ArtistsAlbumsHandlerInterface
 {
+    /**
+     * @var ArtistsAlbumsList
+     */
     private $artistsAlbumsList;
+
+    /**
+     * @var Client
+     */
     private $client;
 
     /**
