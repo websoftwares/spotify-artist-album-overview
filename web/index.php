@@ -1,5 +1,3 @@
-
-
 <?php
 
 include __DIR__.'/../vendor/autoload.php';
@@ -25,7 +23,7 @@ $spotifyArtistIds = [
     '4Otx4bRLSfpah5kX8hdgDC',
 ];
 
-$ArtistsAlbumsLIst = $spotify->getArtistsAndAlbumsByIdList($spotifyArtistIds);
+$ArtistsAlbumsList = $spotify->getArtistsAndAlbumsByIdList($spotifyArtistIds);
 ?>
 
 <!DOCTYPE html>
@@ -35,16 +33,14 @@ $ArtistsAlbumsLIst = $spotify->getArtistsAndAlbumsByIdList($spotifyArtistIds);
 </head>
 <body>
     <table>
-
-<?php foreach ($ArtistsAlbumsLIst as $artistId => $artistsAlbums): ?>
+<?php foreach ($ArtistsAlbumsList as $artistId => $artistsAlbums): ?>
 	<tr>
         <th><?= $artistsAlbums[0]->name; ?></th>
         <?php foreach ($artistsAlbums[1] as $album): ?>
             <td><?= $album->name; ?></td>
         <?php endforeach;?>
-</tr>
+    </tr>
 <?php endforeach; ?>
-
     </table>
 <body>
 </html>

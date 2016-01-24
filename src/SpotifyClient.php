@@ -5,6 +5,7 @@ namespace Websoftwares\Spotify;
 use GuzzleHttp\Client;
 
 /**
+ * Class SpotifyClient.
  */
 class SpotifyClient
 {
@@ -17,7 +18,6 @@ class SpotifyClient
      * Constructor.
      *
      * @param Client $client Instance of the guzzle client.
-     * @param ArtistHandlerFactory Instance of the artist handler.
      */
     public function __construct(Client $client)
     {
@@ -29,7 +29,7 @@ class SpotifyClient
      *
      * @param array $artistIdList list of spotify id's.
      *
-     * @return array Artists list.
+     * @return ArtistsAlbumsList
      */
     public function getArtistsAndAlbumsByIdList(array $artistIdList = [])
     {
